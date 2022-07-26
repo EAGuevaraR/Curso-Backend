@@ -41,7 +41,30 @@ while(opcion!=5):
     registros = [x.values() for x in alumnos]
     print(tabulate.tabulate(registros,cabeceras))
   elif(opcion == 3):
-    print("ACTULALIZAR ALUMNO")
+    print("ACTUALIZAR ALUMNO")
+    #paso 1 buscar el alumno a editar
+    valorBusqueda=input("Ingrese el email del alumno a actualizar :")
+    indexAlumno = -1
+    for i in range (len(alumnos)):
+      dicAlumnoBusqueda = alumnos[i]
+      for clave,valor in dicAlumnoBusqueda.items():
+        if(valor==valorBusqueda and clave == 'email'):
+          indexAlumno = i
+          break
+    #print("el alumno está en el indice: " + str(indexAlumno))
+    #print("datos del alumno :" +str(alumnos[indexAlumno]))
+    #paso 2 ingresar los nuevo valores para el alumno a editar
+    if(indexAlumno == -1):
+      print("No se encontró el email del alumno")
+    else:
+      dictAlumnoEditar = {
+      'nombre': nombre,
+      'email': email,
+      'celular':celular
+    }
+    #paso 3 Actualizar los datos del alumno
+    alumnos[indexAlumno] = dictAlumnoEditar
+    print("ALUMNO ACTUALIZADO!!!")
   elif(opcion == 4):
     print("ELIMINAR DE ALUMNOS")
   elif(opcion == 5):
